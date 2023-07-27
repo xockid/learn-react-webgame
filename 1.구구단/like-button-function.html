@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>웹게임 - 구구단</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+  <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    'use strict';
+
+    const LikeButton = () => { //함수형 컴포넌트 X 함수 컴포넌트 O
+      // 함수 컴포넌트는 this 쓸 일이 없다.
+      // const liked = result[0];
+      // const setLiked = result[1];
+      const [liked, setLiked] = React.useState(false); //구조분해
+      // 무슨 코드를 작성하든... 결과적으로 return한 것이 화면이 된다.
+      if (liked) {
+        return 'You liked this.';
+      }
+      return (
+        <button onClick={() => { setLiked(true);}}>Like</button>
+      )
+    }
+  </script>
+  <script type="text/babel">
+    //ReactDOM.render(<LikeButton />, document.querySelector('#root')); //React 17버전 코드
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); // React 18버전 코드
+  </script>
+</body>
+</html>

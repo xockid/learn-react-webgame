@@ -1,0 +1,55 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>웹게임 - 구구단</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div> <!--결과: <div id="root"><button>Like</button></div>-->
+  <script type="text/babel">
+    // class GuGuDan extends React.Component {}
+    const GuGuDan = () => {
+      const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+      const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+      const [value, setValue] = React.useState('');
+      const [result, setResult] = React.useState('');
+      const inputRef = React.useRef(null);
+
+      const onSubmitForm = (e) => {
+        e.preventDefault();
+        if (parseInt(value) === first * second) {
+          setResult('정답: ' + value);
+          setFirst(Math.ceil(Math.random() * 9));
+          setSecond(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();
+        } else {
+          setResult('땡');
+          setValue('');
+          inputRef.current.focus();
+        }
+      };
+
+      const onChangeInput = (e) => {
+        setValue(e.target.value);
+      };
+
+      return (
+        <React.Fragment>
+          <div>{first} 곱하기 {second}는?</div>
+          <form onSubmit={onSubmitForm}>
+            <input ref={inputRef} onChange={onChangeInput} value={value}/>
+            <button>입력!</button> //React에서 id는 그대로 쓸 수 있지만 class와 for는 사용하지 못한다. class -> className, for -> htmlFor로 대체
+          </form>
+          <div id="result">{result}</div>
+        </React.Fragment>
+      );
+    }
+  </script>
+  <script type="text/babel">
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
+  </script>
+</body>
+</html>

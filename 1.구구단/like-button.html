@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>웹게임 - 구구단</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> <!--개발용-->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> <!--개발용-->
+  <!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>--> <!--배포용-->
+  <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>--> <!--배포용-->
+  <!-- 실무에서는 보통 Webpack, Babel 등으로 처리하기 때문에 위 스크립트를 사용할 일은 거의 없다. -->
+  <script>
+    'use strict';
+
+    class LikeButton extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {liked: false};
+      }
+      render() {
+        if (this.state.liked) {
+          return 'You liked this.';
+        }
+
+        return React.createElement('button', {onClick: () => this.setState({liked: true})}, 'Like');
+      }
+    } // ErrorBoundary 를 제외하고 class는 사용하지 않는 추세
+    //ErrorBoundary란 하위 컴포넌트 트리의 어디에서든 자바스크립트 에러를 기록하며 깨진 컴포넌트 트리 대신 폴백 UI를 보여주는 React 컴포넌트이다.
+
+    // const LikeButton = () => {};
+    // function LikeButton() {}
+  </script>
+  <script>
+    ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
+  </script>
+</body>
+</html>
