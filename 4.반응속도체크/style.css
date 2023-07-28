@@ -1,0 +1,20 @@
+#screen {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  user-select: none;
+  font-weight: bold;
+  white-space: pre-line;
+}
+#screen.waiting {
+  background-color: powderblue;
+}
+#screen.ready {
+  background-color: palevioletred;
+}
+#screen.now {
+  background-color: darkseagreen;
+}
