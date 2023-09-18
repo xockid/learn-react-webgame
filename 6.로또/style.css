@@ -1,0 +1,14 @@
+.ball {
+    background: ivory;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 8px solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 22px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 20px;
+}
